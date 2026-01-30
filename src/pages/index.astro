@@ -1,0 +1,322 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="zpot">
+  <main>
+    <!-- Animated Background -->
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <!-- Logo -->
+        <div class="logo-container">
+          <img src="/logo.png" alt="ZPOT Logo" class="logo" />
+        </div>
+
+        <!-- Main Content -->
+        <h1 class="title">
+          <span class="z-letter">z</span><span class="pot-text">pot</span>
+        </h1>
+
+        <!-- Coming Soon Text -->
+        <div class="coming-soon">
+          <div class="terminal">
+            <div class="terminal-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-body">
+              <p class="code-line command-line"><span class="prompt">$</span> <span class="typing-text">npm run build-future</span></p>
+              <p class="code-line output output-1">Initializing...</p>
+              <p class="code-line output output-2">Deploying innovation...</p>
+              <p class="code-line output output-3">✓ Stay tuned</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F8F9FA;
+  }
+
+  /* Animated Background */
+  .bg-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 168, 150, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 20%, rgba(0, 168, 150, 0.06) 0%, transparent 50%);
+    animation: gradient-shift 15s ease infinite;
+    z-index: 0;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+  }
+
+  .bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(74, 85, 104, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 85, 104, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+  }
+
+  /* Floating Particles */
+  .particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #00A896;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float 20s infinite;
+  }
+
+  .particle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 15s;
+  }
+
+  .particle:nth-child(2) {
+    left: 30%;
+    animation-delay: 2s;
+    animation-duration: 18s;
+  }
+
+  .particle:nth-child(3) {
+    left: 50%;
+    animation-delay: 4s;
+    animation-duration: 22s;
+  }
+
+  .particle:nth-child(4) {
+    left: 70%;
+    animation-delay: 1s;
+    animation-duration: 20s;
+  }
+
+  .particle:nth-child(5) {
+    left: 90%;
+    animation-delay: 3s;
+    animation-duration: 17s;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    90% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-100px) translateX(100px);
+      opacity: 0;
+    }
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .logo-container {
+    margin-bottom: 2rem;
+    animation: fadeInDown 1s ease-out;
+  }
+
+  .logo {
+    max-width: 200px;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(0, 168, 150, 0.2));
+    animation: float-logo 6s ease-in-out infinite;
+  }
+
+  @keyframes float-logo {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease-out 0.2s both;
+  }
+
+  .z-letter {
+    color: #FF6B6B;
+  }
+
+  .pot-text {
+    color: #4A5568;
+  }
+
+  /* Terminal */
+  .coming-soon {
+    animation: fadeInUp 1s ease-out 0.4s both;
+  }
+
+  .terminal {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(74, 85, 104, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 168, 150, 0.15);
+  }
+
+  .terminal-header {
+    background: rgba(74, 85, 104, 0.05);
+    padding: 0.8rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background: #FF6B6B; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #00A896; }
+
+  .terminal-body {
+    padding: 1.5rem;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .code-line {
+    margin-bottom: 0.5rem;
+  }
+
+  .prompt {
+    color: #00A896;
+    margin-right: 0.5rem;
+  }
+
+  .typing-text {
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    border-right: 2px solid #4A5568;
+    animation: typing 2s steps(20) 1s both, blink 0.75s step-end infinite;
+    color: #4A5568;
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  .output {
+    animation: fadeIn 0.5s ease-out both;
+  }
+
+  .output-1 {
+    color: #4A5568 !important;
+  }
+
+  .output-2 {
+    color: #4A5568 !important;
+  }
+
+  .output-3 {
+    color: #00A896 !important;
+  }
+
+  .output:nth-child(2) { animation-delay: 3s; }
+  .output:nth-child(3) { animation-delay: 4s; }
+  .output:nth-child(4) { animation-delay: 5s; }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
