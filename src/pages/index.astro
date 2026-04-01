@@ -76,22 +76,23 @@ import Layout from '../layouts/Layout.astro';
 
   .particle {
     position: absolute;
-    width: 6px;
-    height: 6px;
+    top: 0;
+    width: var(--size, 6px);
+    height: var(--size, 6px);
     background: #00a778;
     border-radius: 50%;
-    opacity: 0.6;
-    animation: float 20s infinite;
+    opacity: 0;
+    animation: particle-fly var(--duration, 20s) linear var(--delay, 0s) infinite;
     filter: drop-shadow(0 0 6px rgba(0, 167, 120, 0.4));
   }
 
-  .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 17s; }
-  .particle:nth-child(2) { left: 25%; animation-delay: 1.5s; animation-duration: 21s; }
-  .particle:nth-child(3) { left: 40%; animation-delay: 3s; animation-duration: 19s; }
-  .particle:nth-child(4) { left: 55%; animation-delay: 0.5s; animation-duration: 23s; }
-  .particle:nth-child(5) { left: 70%; animation-delay: 2.5s; animation-duration: 20s; }
-  .particle:nth-child(6) { left: 82%; animation-delay: 1s; animation-duration: 18s; }
-  .particle:nth-child(7) { left: 92%; animation-delay: 3.5s; animation-duration: 22s; }
+  .particle:nth-child(1) { left: 8%; --size: 4px; --duration: 14s; --delay: -4s; --drift: 20px; --drift-end: -16px; }
+  .particle:nth-child(2) { left: 20%; --size: 7px; --duration: 19s; --delay: -9s; --drift: -28px; --drift-end: 22px; }
+  .particle:nth-child(3) { left: 34%; --size: 5px; --duration: 16s; --delay: -2s; --drift: 26px; --drift-end: -18px; }
+  .particle:nth-child(4) { left: 49%; --size: 6px; --duration: 22s; --delay: -12s; --drift: -18px; --drift-end: 14px; }
+  .particle:nth-child(5) { left: 63%; --size: 4px; --duration: 15s; --delay: -6s; --drift: 24px; --drift-end: -20px; }
+  .particle:nth-child(6) { left: 78%; --size: 8px; --duration: 20s; --delay: -10s; --drift: -22px; --drift-end: 16px; }
+  .particle:nth-child(7) { left: 91%; --size: 5px; --duration: 18s; --delay: -7s; --drift: 18px; --drift-end: -14px; }
 
   .hero {
     position: relative;
@@ -171,6 +172,27 @@ import Layout from '../layouts/Layout.astro';
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-12px); }
+  }
+
+  @keyframes particle-fly {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 108vh, 0) scale(0.6);
+    }
+    12% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 0.75;
+      transform: translate3d(var(--drift, 20px), 44vh, 0) scale(1);
+    }
+    88% {
+      opacity: 0.55;
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(var(--drift-end, -18px), -14vh, 0) scale(0.8);
+    }
   }
 
   @keyframes drift {
