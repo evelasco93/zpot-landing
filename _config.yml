@@ -1,0 +1,17 @@
+exclude:
+  - src
+  - public
+  - node_modules
+  - dist
+  - package.json
+  - package-lock.json
+  - pnpm-lock.yaml
+  - tsconfig.json
+  - astro.config.mjs
+  - README.md
+  - CNAME
+  - tsconfig.base.json
+  - tsconfig.*.json
+  - .vscode
+  - .gitignore
+  - .nojekyll
